@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#fff8de"/>
+      <stop offset=".48" stop-color="#8cebdd"/>
+      <stop offset="1" stop-color="#c9a8ff"/>
+    </linearGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="22" y="22" width="956" height="956" rx="42" fill="none" stroke="url(#line)" stroke-width="2" opacity=".78" vector-effect="non-scaling-stroke" filter="url(#soft)"/>
+  <g fill="none" stroke="url(#line)" vector-effect="non-scaling-stroke" stroke-linecap="round">
+    <path d="M22 126V54Q22 22 54 22H142M978 126V54Q978 22 946 22H858M22 874v72q0 32 32 32h88M978 874v72q0 32-32 32h-88" stroke-width="5"/>
+    <path d="M0 274C184 46 328 78 500 222S812 378 1000 160M0 746C176 938 348 912 514 776S818 622 1000 824" stroke-width="1.5" opacity=".52"/>
+    <path d="M0 486C202 356 330 362 480 468S802 620 1000 506" stroke-width="1" opacity=".28"/>
+  </g>
+  <g fill="#fffbea" opacity=".88" filter="url(#soft)">
+    <path d="M112 160l4 12 12 4-12 4-4 12-4-12-12-4 12-4z"/>
+    <path d="M890 224l4 12 12 4-12 4-4 12-4-12-12-4 12-4z"/>
+    <path d="M144 842l4 12 12 4-12 4-4 12-4-12-12-4 12-4z"/>
+    <path d="M862 812l5 15 15 5-15 5-5 15-5-15-15-5 15-5z"/>
+  </g>
+  <g stroke="#fff8df" opacity=".44" vector-effect="non-scaling-stroke">
+    <path d="M70 22v18M120 22v11M170 22v18M220 22v11M780 22v11M830 22v18M880 22v11M930 22v18"/>
+    <path d="M70 978v-18M120 978v-11M170 978v-18M220 978v-11M780 978v-11M830 978v-18M880 978v-11M930 978v-18"/>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+# Local operating-system files
+.DS_Store
+node_modules/
+.env
+.env.*
+*.pem
+*.key
+
+# Original local review documents and unused export archives
+START-HERE.md
+PLAN-COMPARISON.md
+BUILD-MANIFEST.json
+site/*.zip
+site/*.tmp
