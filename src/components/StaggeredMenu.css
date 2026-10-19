@@ -1,0 +1,237 @@
+.staggered-menu-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 90;
+  pointer-events: none;
+}
+
+.staggered-menu-wrapper.fixed-wrapper {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  overflow: clip;
+}
+
+.staggered-menu-header {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(18px, 2.2vw, 32px) clamp(20px, 3vw, 48px);
+  pointer-events: none;
+}
+
+.staggered-menu-header > * { pointer-events: auto; }
+
+.sm-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #f4f1df;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(1.02rem, 1.65vw, 1.42rem);
+  letter-spacing: 0.055em;
+  line-height: 1;
+  text-decoration: none;
+  user-select: none;
+}
+
+.sm-logo-img {
+  display: block;
+  width: clamp(42px, 4vw, 54px);
+  height: clamp(42px, 4vw, 54px);
+  object-fit: contain;
+  filter: drop-shadow(0 7px 12px rgba(0, 0, 0, 0.2));
+}
+
+.sm-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 42px;
+  padding: 0 2px;
+  border: 0;
+  background: transparent;
+  color: #f4f1df;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sm-toggle:focus-visible {
+  outline: 3px solid #ef4c3c;
+  outline-offset: 5px;
+  border-radius: 4px;
+}
+
+.sm-toggle-textWrap {
+  position: relative;
+  display: inline-block;
+  width: 4.5rem;
+  height: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sm-toggle-textInner { display: flex; flex-direction: column; line-height: 1; }
+.sm-toggle-line { display: block; height: 1em; line-height: 1; text-align: right; }
+
+.sm-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.sm-icon-line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.staggered-menu-panel {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  width: clamp(360px, 44vw, 610px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: clamp(115px, 14vh, 150px) clamp(30px, 5vw, 72px) clamp(30px, 5vw, 64px);
+  background: #10291e;
+  color: #f4f1df;
+  opacity: 0;
+  pointer-events: auto;
+}
+
+[data-position="left"] .staggered-menu-panel { right: auto; left: 0; }
+
+.sm-prelayers {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: clamp(360px, 44vw, 610px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-position="left"] .sm-prelayers { right: auto; left: 0; }
+.sm-prelayer { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; }
+.sm-panel-inner { flex: 1; display: flex; flex-direction: column; gap: 1.25rem; }
+.sm-panel-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.42rem; }
+.sm-panel-itemWrap { position: relative; overflow: hidden; line-height: 1; }
+
+.sm-panel-item {
+  position: relative;
+  display: inline-block;
+  padding-right: 1.35em;
+  color: #f4f1df;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(2.8rem, 5.2vw, 5.4rem);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 0.94;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 220ms ease, transform 220ms ease;
+}
+
+.sm-panel-item:hover,
+.sm-panel-item:focus-visible { color: var(--sm-accent, #f7df36); transform: translateX(8px); }
+.sm-panel-item:focus-visible { outline: 3px solid var(--sm-accent, #f7df36); outline-offset: 5px; }
+.sm-panel-itemLabel { display: inline-block; transform-origin: 50% 100%; will-change: transform; }
+.sm-panel-list[data-numbering] { counter-reset: smItem; }
+
+.sm-panel-list[data-numbering] .sm-panel-item::after {
+  counter-increment: smItem;
+  content: counter(smItem, decimal-leading-zero);
+  position: absolute;
+  top: 0.08em;
+  right: 0;
+  color: var(--sm-accent, #f7df36);
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(0.72rem, 1vw, 0.92rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  opacity: var(--sm-num-opacity, 0);
+  pointer-events: none;
+  user-select: none;
+}
+
+.sm-socials { margin-top: auto; padding-top: 2.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.sm-socials-title {
+  margin: 0;
+  color: var(--sm-accent, #f7df36);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.sm-socials-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1rem; }
+.sm-socials-link {
+  display: inline-block;
+  color: #f4f1df;
+  font-size: clamp(1rem, 1.7vw, 1.35rem);
+  font-weight: 800;
+  text-decoration: none;
+  transition: color 220ms ease, opacity 220ms ease;
+}
+.sm-socials-list:hover .sm-socials-link:not(:hover) { opacity: 0.35; }
+.sm-socials-link:hover,
+.sm-socials-link:focus-visible { color: var(--sm-accent, #f7df36); opacity: 1; }
+.sm-socials-link:focus-visible { outline: 2px solid var(--sm-accent, #f7df36); outline-offset: 4px; }
+
+@media (max-width: 720px) {
+  .staggered-menu-header { padding: 14px 18px; }
+  .sm-logo { gap: 7px; font-size: 0.92rem; }
+  .sm-logo-img { width: 42px; height: 42px; }
+  .sm-toggle { font-size: 0.7rem; }
+  .sm-toggle-textWrap { width: 4rem; }
+  .staggered-menu-panel,
+  .sm-prelayers { width: 100%; left: 0; right: 0; }
+  .staggered-menu-panel { padding: 92px 22px 28px; }
+  .sm-panel-list { gap: 0.65rem; }
+  .sm-panel-item { font-size: clamp(2.9rem, 14vw, 4.7rem); line-height: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sm-panel-item,
+  .sm-socials-link { transition-duration: 0.01ms; }
+}
+
+/* Contrast is sampled at each control, so split backgrounds work on mobile too. */
+.staggered-menu-header .sm-logo,
+.staggered-menu-header .sm-toggle {
+  color: var(--nav-ink, #f4f1df);
+  text-shadow: 0 1px 8px var(--nav-shadow, #08150f66);
+}
+.staggered-menu-header .sm-logo:focus-visible,
+.staggered-menu-header .sm-toggle:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 5px;
+}
