@@ -25,9 +25,9 @@ npm test
 npm run build:pages
 ```
 
-This source migration is staged on `editable-source-migration` for review. No deployment is triggered by this branch.
+Pushes to `main` build, test and publish the current editable source to GitHub Pages.
 The Pages build handles the `/artstronomy-2026/` base path, including runtime
-model URLs and embedded AR/scanner pages. The existing `site/` folder remains the deployment input for the unchanged Pages workflow. Switching that workflow to `dist/client/` requires deployment approval.
+model URLs and embedded AR/scanner pages. The Pages workflow deploys `dist/client/`. The `site/` folder is retained only as a legacy snapshot.
 The legacy `node preview.mjs` command still previews that old snapshot.
 Use `npm run preview` after a build to inspect the new build.
 
