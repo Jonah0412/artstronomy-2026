@@ -4,7 +4,7 @@ import * as THREE from 'three';
 // mountCosmicViewport(container, { creators }) returns controls and destroy().
 const TAU = Math.PI * 2;
 const clamp = THREE.MathUtils.clamp;
-const colors = { Branding: '#f4dd80', Advertising: '#ff957d', Animation: '#a8c6ff', 'Web Design': '#87e1cc', Publishing: '#e7bcee' };
+const colors = { Branding: '#ffd400', Advertising: '#56c6b5', Animation: '#a7c2f5', 'Web Design': '#56c6b5', Publishing: '#56c6b5' };
 export const sectorCategory = category => /Animation|Mix Media/.test(category) ? 'Animation' : category;
 export const clampZoom = value => clamp(Number(value) || 1, 1, 4);
 export function sectorCoordinates(position) {
@@ -67,7 +67,7 @@ function createShell(host, creators) {
   root.innerHTML = `
     <div class="cosmic__stage" tabindex="0" role="application" aria-label="Galaxy: drag or use arrow keys to rotate. Press plus or minus to zoom. Select a creator below to focus."></div>
     <canvas class="cosmic__reticles" aria-hidden="true"></canvas>
-    <div class="cosmic__heading"><span class="cosmic__eyebrow">ARTSTRONOMY / OBSERVATORY 01</span><h2>Every creator.<br>A new constellation.</h2><p>22 stars. One creative universe.</p></div>
+    <div class="cosmic__heading"><span class="cosmic__eyebrow">ARTSTRONOMY / OBSERVATORY 01</span><h2>Every creator.<br>A new constellation.</h2><p>${creators.length} stars. One creative universe.</p></div>
     <div class="cosmic__readout"><span>CELESTIAL SURVEY / 2026</span><b data-coordinates>RA 00.00h · DEC +00.0°</b><small>Exhibition sector coordinates</small></div>
     <div class="cosmic__core" aria-hidden="true"><span>ARTStronomy</span><strong>2026</strong></div>
     <div class="cosmic__labels" aria-hidden="true"></div>
@@ -78,7 +78,7 @@ function createShell(host, creators) {
       <div class="cosmic__modes" aria-label="Exploration mode"><button type="button" data-orbit aria-pressed="true">Orbit galaxy</button><button type="button" data-lens aria-pressed="false">Cosmic lens</button></div>
       <div class="cosmic__zoom"><button type="button" data-minus aria-label="Decrease magnification">−</button><output data-zoom>1.0×</output><button type="button" data-plus aria-label="Increase magnification">+</button></div>
       <button type="button" data-reset aria-label="Reset galaxy view">Reset view</button>
-      <label class="cosmic__select"><span class="cosmic__sr">Focus a creator</span><select data-select><option value="">Explore 22 creators</option></select></label>
+      <label class="cosmic__select"><span class="cosmic__sr">Focus a creator</span><select data-select><option value="">Explore ${creators.length} creators</option></select></label>
     </div>
     <p class="cosmic__hint" data-hint>Drag to orbit · hover a star · scroll to zoom</p>
     <span class="cosmic__tracking" data-tracking>Mouse & touch ready</span>
@@ -134,7 +134,7 @@ export function mountCosmicViewport(host, { creators = [], onError = () => {} } 
   const spriteCanvas = document.createElement('canvas'); spriteCanvas.width = spriteCanvas.height = 64;
   const ctx = spriteCanvas.getContext('2d');
   const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-  gradient.addColorStop(0, '#fff'); gradient.addColorStop(.10, 'rgba(255,255,255,.96)');
+  gradient.addColorStop(0, '#fffef6'); gradient.addColorStop(.10, 'rgba(255,255,255,.96)');
   gradient.addColorStop(.3, 'rgba(255,255,255,.26)'); gradient.addColorStop(1, 'rgba(255,255,255,0)');
   ctx.fillStyle = gradient; ctx.fillRect(0, 0, 64, 64);
   const glowTexture = new THREE.CanvasTexture(spriteCanvas);
@@ -147,7 +147,7 @@ export function mountCosmicViewport(host, { creators = [], onError = () => {} } 
   for (let i = 0; i < (coarsePointer ? 850 : 1500); i++) {
     const angle = random() * TAU, radius = 2 + random() * 23;
     dustPositions.push(Math.cos(angle) * radius, (random() - .5) * 10, Math.sin(angle) * radius);
-    const color = new THREE.Color(i % 4 ? '#a4c6c0' : '#f3dd9d').multiplyScalar(.3 + random() * .5);
+    const color = new THREE.Color(i % 4 ? '#56c6b5' : '#ffd400').multiplyScalar(.3 + random() * .5);
     dustColors.push(color.r, color.g, color.b);
   }
   const dustGeometry = new THREE.BufferGeometry();
@@ -157,10 +157,10 @@ export function mountCosmicViewport(host, { creators = [], onError = () => {} } 
   scene.add(dust);
 
   const core = new THREE.Group(); universe.add(core);
-  const coreGlow = new THREE.Sprite(spriteMaterial('#fce8a2')); coreGlow.scale.setScalar(2.8); core.add(coreGlow);
-  core.add(new THREE.Mesh(new THREE.IcosahedronGeometry(.46, 1), new THREE.MeshBasicMaterial({ color: '#f7e5ae', wireframe: true, transparent: true, opacity: .65 })));
+  const coreGlow = new THREE.Sprite(spriteMaterial('#ffd400')); coreGlow.scale.setScalar(2.8); core.add(coreGlow);
+  core.add(new THREE.Mesh(new THREE.IcosahedronGeometry(.46, 1), new THREE.MeshBasicMaterial({ color: '#ffd400', wireframe: true, transparent: true, opacity: .65 })));
   for (let i = 0; i < 3; i++) {
-    const hoop = new THREE.Mesh(new THREE.TorusGeometry(.82 + i * .12, .007, 4, 72), new THREE.MeshBasicMaterial({ color: i ? '#7ad6bb' : '#ecd794', transparent: true, opacity: .48 }));
+    const hoop = new THREE.Mesh(new THREE.TorusGeometry(.82 + i * .12, .007, 4, 72), new THREE.MeshBasicMaterial({ color: i ? '#56c6b5' : '#ffd400', transparent: true, opacity: .48 }));
     hoop.rotation.set(i * .86, i * .74, i * .6); core.add(hoop);
   }
   const groups = Object.keys(colors);
@@ -189,10 +189,10 @@ export function mountCosmicViewport(host, { creators = [], onError = () => {} } 
   const connectionBuffer = new Float32Array(Math.max(1, nodes.length * 2) * 6);
   const connectionGeometry = new THREE.BufferGeometry();
   connectionGeometry.setAttribute('position', new THREE.BufferAttribute(connectionBuffer, 3).setUsage(THREE.DynamicDrawUsage));
-  const connections = new THREE.LineSegments(connectionGeometry, new THREE.LineBasicMaterial({ color: '#8acabd', transparent: true, opacity: .16 })); scene.add(connections);
-  const grid = new THREE.PolarGridHelper(9, 24, 12, 128, '#71e5be', '#458776'); grid.layers.set(1); scene.add(grid);
-  const hiddenWire = new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(1.28, 1)), new THREE.LineBasicMaterial({ color: '#e6d091', transparent: true, opacity: .6 })); hiddenWire.layers.set(1); scene.add(hiddenWire);
-  const vectors = new THREE.LineSegments(connectionGeometry, new THREE.LineBasicMaterial({ color: '#b5ffe7', transparent: true, opacity: .7 })); vectors.layers.set(1); scene.add(vectors);
+  const connections = new THREE.LineSegments(connectionGeometry, new THREE.LineBasicMaterial({ color: '#56c6b5', transparent: true, opacity: .16 })); scene.add(connections);
+  const grid = new THREE.PolarGridHelper(9, 24, 12, 128, '#56c6b5', '#28405d'); grid.layers.set(1); scene.add(grid);
+  const hiddenWire = new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(1.28, 1)), new THREE.LineBasicMaterial({ color: '#ffd400', transparent: true, opacity: .6 })); hiddenWire.layers.set(1); scene.add(hiddenWire);
+  const vectors = new THREE.LineSegments(connectionGeometry, new THREE.LineBasicMaterial({ color: '#56c6b5', transparent: true, opacity: .7 })); vectors.layers.set(1); scene.add(vectors);
 
   const sceneTarget = new THREE.WebGLRenderTarget(1, 1, { depthBuffer: true });
   const gridTarget = new THREE.WebGLRenderTarget(1, 1, { depthBuffer: true });

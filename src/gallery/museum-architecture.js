@@ -48,14 +48,14 @@ export function buildMuseum({shell,exhibits,layout,own,textureFor,textTexture,qu
   for(let i=0;i<4;i++)for(const [x,z] of [corners[i],corners[(i+1)%4]])mapPoints.push((x-6)*.023,0,(z+8.5)*.043);
  }
  const mapGeometry=own(new T.BufferGeometry());mapGeometry.setAttribute('position',new T.Float32BufferAttribute(mapPoints,3));
- const floorMap=new T.LineSegments(mapGeometry,own(new T.LineBasicMaterial({color:'#a8edc9',transparent:true,opacity:.8,depthWrite:false,blending:T.AdditiveBlending})));floorMap.position.set(-6.1,1.08,1.8);shell.add(floorMap);
+ const floorMap=new T.LineSegments(mapGeometry,own(new T.LineBasicMaterial({color:'#56c6b5',transparent:true,opacity:.8,depthWrite:false,blending:T.AdditiveBlending})));floorMap.position.set(-6.1,1.08,1.8);shell.add(floorMap);
  const signs=[];
  for(const wing of WINGS.filter(w=>w.id!=='atrium')){
-  const mat=textTexture([{text:wing.label.toUpperCase(),size:44,y:72},{text:'ARTSTRONOMY  /  '+String(layout.filter(e=>e.wing===wing.id).length)+' CREATIVE WORLDS',size:24,y:126}],{width:1024,height:160,bg:'#12211c',color:'#e5d49b'});
+  const mat=textTexture([{text:wing.label.toUpperCase(),size:44,y:72},{text:'ARTSTRONOMY  /  '+String(layout.filter(e=>e.wing===wing.id).length)+' CREATIVE WORLDS',size:24,y:126}],{width:1024,height:160,bg:'#161f30',color:'#ffd400'});
   const sign=plane(shell,4.3,.67,wing.id==='identity'?-7.05:wing.id==='interaction'?7.05:0,4.35,wing.id==='animation'?-7.05:0,mat);
   if(wing.id!=='animation')sign.rotation.y=wing.id==='identity'?Math.PI/2:-Math.PI/2;signs.push(sign);
  }
- const welcome=textTexture([{text:'ARTSTRONOMY',size:88,y:110},{text:'ORBITAL ART MUSEUM  /  2026',size:34,y:174}],{width:1024,height:210,bg:'#14231c',color:'#f6e2a7'});
+ const welcome=textTexture([{text:'ARTSTRONOMY',size:88,y:110},{text:'ORBITAL ART MUSEUM  /  2026',size:34,y:174}],{width:1024,height:210,bg:'#161f30',color:'#ffd400'});
  const arrival=plane(shell,5.8,1.18,0,3.2,6.6,welcome);arrival.rotation.y=Math.PI;
  const exit=textTexture([{text:'YOUR NEXT ORBIT',size:60,y:80},{text:'CONTINUE TO THE EXHIBITION WEBSITE',size:28,y:139}],{width:1024,height:180});plane(shell,5,1.05,0,2.4,-23.85,exit);
  const poolData=new Uint8Array(64*64*4);for(let y=0;y<64;y++)for(let x=0;x<64;x++){const i=(y*64+x)*4,d=Math.hypot((x-31.5)/32,(y-31.5)/32);poolData[i]=poolData[i+1]=poolData[i+2]=255;poolData[i+3]=Math.pow(Math.max(0,1-d),2)*255;}
@@ -69,7 +69,7 @@ export function buildMuseum({shell,exhibits,layout,own,textureFor,textTexture,qu
   addFrame(2.8,2.12,.16,0,2.15,-.09,kit.carbon);
   for(const side of [-1,1]){addFrame(.045,2.16,.1,side*1.4,2.15,.01,kit.bronze);addFrame(2.8,.045,.1,0,2.15+side*1.06,.01,kit.bronze);}
   const art=plane(group,2.64,1.76,0,2.15,.025,own(new T.MeshBasicMaterial({map:textureFor(exhibit.image),toneMapped:false})));art.userData.index=exhibit.index;artMeshes[exhibit.index]=art;objects.push(art);
-  const label=plane(group,2.65,.48,0,.78,.05,textTexture([{text:String(exhibit.index+1).padStart(2,'0')+' / '+exhibit.category.toUpperCase(),size:23,y:34},{text:exhibit.name,size:34,y:81},{text:'CATEGORY ARTWORK · PROJECT TO BE ANNOUNCED',size:18,y:118}],{width:768,height:140,bg:'#14231c',color:'#e8e2ce'}));
+  const label=plane(group,2.65,.48,0,.78,.05,textTexture([{text:String(exhibit.index+1).padStart(2,'0')+' / '+exhibit.category.toUpperCase(),size:23,y:34},{text:exhibit.name,size:34,y:81},{text:'CATEGORY ARTWORK · PROJECT TO BE ANNOUNCED',size:18,y:118}],{width:768,height:140,bg:'#161f30',color:'#e8e2ce'}));
   label.userData.index=exhibit.index;captions[exhibit.index]=label;objects.push(label);
   addFrame(2.5,.04,.08,0,3.4,.12,kit.warm);
   // Instanced bronze track fixtures + physical light pools avoid 22 costly lights.

@@ -19,17 +19,17 @@ export function createMaterialKit(own){
  return {
   titanium:standard('#7b8786',{metalness:.88,roughness:.34,bumpMap:brushed,bumpScale:.015,roughnessMap:brushed}),
   ceramic:own(new T.MeshPhysicalMaterial({color:'#c7c5b3',metalness:.24,roughness:.34,clearcoat:.25,clearcoatRoughness:.3})),
-  carbon:standard('#182423',{metalness:.35,roughness:.58,bumpMap:carbon,bumpScale:.018}),
+  carbon:standard('#161f30',{metalness:.35,roughness:.58,bumpMap:carbon,bumpScale:.018}),
   gasket:standard('#091011',{metalness:.05,roughness:.86}),
   bronze:standard('#a98b52',{metalness:.82,roughness:.3}),
-  stone:own(new T.MeshPhysicalMaterial({color:'#182421',metalness:.32,roughness:.28,bumpMap:stone,bumpScale:.012,roughnessMap:stone,clearcoat:.55,clearcoatRoughness:.22})),
+  stone:own(new T.MeshPhysicalMaterial({color:'#161f30',metalness:.32,roughness:.28,bumpMap:stone,bumpScale:.012,roughnessMap:stone,clearcoat:.55,clearcoatRoughness:.22})),
   plaster:standard('#d2ccba',{metalness:0,roughness:.9,bumpMap:plaster,bumpScale:.025}),
-  glass:own(new T.MeshPhysicalMaterial({color:'#b0d4cc',metalness:.1,roughness:.13,transparent:true,opacity:.1,clearcoat:1,side:T.DoubleSide,depthWrite:false})),
-  warm:standard('#f5d992',{metalness:.15,roughness:.3,emissive:'#ffce78',emissiveIntensity:2.2}),
-  teal:standard('#9ad4c5',{metalness:.1,roughness:.4,emissive:'#7bc9bb',emissiveIntensity:1.3}),
+  glass:own(new T.MeshPhysicalMaterial({color:'#b8e3df',metalness:.1,roughness:.13,transparent:true,opacity:.1,clearcoat:1,side:T.DoubleSide,depthWrite:false})),
+  warm:standard('#ffd400',{metalness:.15,roughness:.3,emissive:'#ffd400',emissiveIntensity:2.2}),
+  teal:standard('#56c6b5',{metalness:.1,roughness:.4,emissive:'#56c6b5',emissiveIntensity:1.3}),
  };
 }
-export function hologramMaterial(own,color='#8adcca'){
+export function hologramMaterial(own,color='#56c6b5'){
  return own(new T.ShaderMaterial({transparent:true,depthWrite:false,side:T.DoubleSide,blending:T.AdditiveBlending,
   uniforms:{time:{value:0},ink:{value:new T.Color(color)},opacity:{value:.5}},
   vertexShader:'varying vec3 p; varying vec3 n; varying vec3 view; void main(){p=position;n=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(position,1.);view=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}',

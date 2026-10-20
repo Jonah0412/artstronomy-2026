@@ -13,7 +13,7 @@ export const exhibition = Object.freeze({
   venue: 'GMBB · Level 5', city: 'Kuala Lumpur',
   instagram: 'https://www.instagram.com/artstronomy_2026?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==',
 });
-export const disciplineColors = { Branding: '#E4B44E', 'Web Design': '#7FD8E8', Publishing: '#B6A1DB', Advertising: '#F29A80', Animation: '#8FDCCD' };
+export const disciplineColors = { Branding: '#ffd400', 'Web Design': '#56c6b5', Publishing: '#a7c2f5', Advertising: '#56c6b5', Animation: '#56c6b5' };
 export const projectStatus = creator => creator.projectTitle || 'Project details to be announced';
 // Stable coordinates: large touch targets and identical ordering in DOM/list views.
 export function clusterPoints(count) {

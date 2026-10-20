@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
 const categoryColors = {
-  "Web Design": ["#a886df", "#08150f"],
-  Branding: ["#f7df36", "#08150f"],
-  Publishing: ["#ef4c3c", "#f4f1df"],
-  Advertising: ["#f4f1df", "#08150f"],
-  "Mix Media": ["#5bc0be", "#08150f"],
-  "3D Animation": ["#233b7d", "#f4f1df"],
-  "2D Animation": ["#ff8f70", "#08150f"],
+  "Web Design": ["#3e7bef", "#0b1220"],
+  Branding: ["#ffd400", "#161f30"],
+  Publishing: ["#56c6b5", "#161f30"],
+  Advertising: ["#fffef6", "#161f30"],
+  "Mix Media": ["#56c6b5", "#161f30"],
+  "3D Animation": ["#234e99", "#fffef6"],
+  "2D Animation": ["#56c6b5", "#161f30"],
 };
 
 export function HoverExpand({ items, className = "", selection = null }) {
@@ -75,7 +75,7 @@ export function HoverExpand({ items, className = "", selection = null }) {
       <div className="hover-expand__track" aria-live="polite">
         {items.map((item) => {
           const active = item.id === activeId;
-          const [cardColor, cardInk] = categoryColors[item.category] ?? ["#a886df", "#08150f"];
+          const [cardColor, cardInk] = categoryColors[item.category] ?? ["#56c6b5", "#161f30"];
           return (
             <button
               type="button"

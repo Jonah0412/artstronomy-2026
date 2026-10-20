@@ -290,12 +290,12 @@ export function App() {
         socialItems={socialItems}
         displaySocials
         displayItemNumbering
-        menuButtonColor="#f4f1df"
-        openMenuButtonColor="#f4f1df"
+        menuButtonColor="#fffef6"
+        openMenuButtonColor="#fffef6"
         changeMenuColorOnOpen
-        colors={["#a886df", "#ef4c3c", "#f7df36"]}
+        colors={["#3e7bef", "#56c6b5", "#ffd400"]}
         logoUrl="/assets/artstronomy-logo.png"
-        accentColor="#f7df36"
+        accentColor="#ffd400"
         isFixed={true}
         closeOnClickAway={true}
       />

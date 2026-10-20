@@ -6,7 +6,7 @@ function backgroundOf(element) {
     const values = getComputedStyle(node).backgroundColor.match(/[\d.]+/g)?.map(Number);
     if (values?.length >= 3 && (values[3] ?? 1) > 0.5) return values.slice(0, 3);
   }
-  return [8, 21, 15];
+  return [22, 31, 48];
 }
 function luminance(rgb) {
   const linear = rgb.map(value => {
@@ -15,7 +15,7 @@ function luminance(rgb) {
   });
   return linear[0] * .2126 + linear[1] * .7152 + linear[2] * .0722;
 }
-const dark = luminance([8, 21, 15]), light = luminance([244, 241, 223]);
+const dark = luminance([22, 31, 48]), light = luminance([255, 254, 246]);
 
 export function useNavigationContrast(headerRef, panelRef, open) {
   useLayoutEffect(() => {
@@ -34,14 +34,14 @@ export function useNavigationContrast(headerRef, panelRef, open) {
         const panelLeft = header.parentElement.dataset.position === 'left' ? 0 : innerWidth - (panel?.width || 0);
         const covered = open && (control.classList.contains('sm-toggle') || (panel && x >= panelLeft && x <= panelLeft + panel.width));
         const surface = regions.findLast(({rect:r}) => x >= r.left && x <= r.right && y >= r.top && y < r.bottom)?.element;
-        const brightness = covered ? luminance([16, 41, 30]) : luminance(backgroundOf(surface));
+        const brightness = covered ? luminance([22, 31, 48]) : luminance(backgroundOf(surface));
         const darkContrast = (brightness + .05) / (dark + .05);
         const lightContrast = (light + .05) / (brightness + .05);
         const ink = darkContrast > lightContrast ? 'dark' : 'light';
         if (control.dataset.contrast === ink) continue;
         control.dataset.contrast = ink;
-        control.style.setProperty('--nav-ink', ink === 'dark' ? '#08150f' : '#f4f1df');
-        control.style.setProperty('--nav-shadow', ink === 'dark' ? '#f4f1df66' : '#08150f66');
+        control.style.setProperty('--nav-ink', ink === 'dark' ? '#161f30' : '#fffef6');
+        control.style.setProperty('--nav-shadow', ink === 'dark' ? '#fffef666' : '#161f3066');
       }
     }
     function schedule() { if (!frame) frame = requestAnimationFrame(update); }

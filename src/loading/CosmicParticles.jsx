@@ -10,7 +10,7 @@ export function CosmicParticles(){
   let width=1,height=1,dpr=1,alive=true;
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const hoshi=new Image();hoshi.src='/assets/hoshi-mascot.webp';
-  const particles=Array.from({length:48},(_,i)=>({phase:i/48,angle:i*2.39996,type:i%9===0?'hoshi':i%4===0?'planet':'star',color:['#f7df36','#a886df','#ef8677','#bed4c4'][i%4]}));
+  const particles=Array.from({length:48},(_,i)=>({phase:i/48,angle:i*2.39996,type:i%9===0?'hoshi':i%4===0?'planet':'star',color:['#ffd400','#56c6b5','#56c6b5','#b9c6d9'][i%4]}));
   function draw(){
    ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,width,height);
    const radius=Math.hypot(width,height)*.58;
@@ -19,7 +19,7 @@ export function CosmicParticles(){
     const x=width*.5+Math.cos(angle)*r,y=height*.45+Math.sin(angle)*r*.85,size=(p.type==='hoshi'?100:p.type==='planet'?35:18)*t+3;
     ctx.save();ctx.translate(x,y);ctx.rotate(angle*.22);ctx.globalAlpha=Math.min(.75,t*2)*Math.min(1,(1-t)*7);ctx.fillStyle=p.color;
     if(p.type==='hoshi'&&hoshi.complete&&hoshi.naturalWidth){ctx.drawImage(hoshi,-size/2,-size/2,size,size*hoshi.naturalHeight/hoshi.naturalWidth);}
-    else if(p.type==='planet'){const g=ctx.createRadialGradient(-size*.2,-size*.2,1,0,0,size/2);g.addColorStop(0,p.color);g.addColorStop(1,'#192b30');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,size/2,0,Math.PI*2);ctx.fill();ctx.strokeStyle=p.color;ctx.lineWidth=1.2;ctx.beginPath();ctx.ellipse(0,0,size*.85,size*.2,-.4,0,Math.PI*2);ctx.stroke();}
+    else if(p.type==='planet'){const g=ctx.createRadialGradient(-size*.2,-size*.2,1,0,0,size/2);g.addColorStop(0,p.color);g.addColorStop(1,'#161f30');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,size/2,0,Math.PI*2);ctx.fill();ctx.strokeStyle=p.color;ctx.lineWidth=1.2;ctx.beginPath();ctx.ellipse(0,0,size*.85,size*.2,-.4,0,Math.PI*2);ctx.stroke();}
     else {ctx.beginPath();for(let i=0;i<8;i++){const a=i*Math.PI/4,rr=i%2?size*.13:size*.5;ctx.lineTo(Math.cos(a)*rr,Math.sin(a)*rr);}ctx.closePath();ctx.fill();}
     ctx.restore();
    }

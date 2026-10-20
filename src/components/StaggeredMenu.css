@@ -33,7 +33,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: #f4f1df;
+  color: #fffef6;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: clamp(1.02rem, 1.65vw, 1.42rem);
   letter-spacing: 0.055em;
@@ -59,7 +59,7 @@
   padding: 0 2px;
   border: 0;
   background: transparent;
-  color: #f4f1df;
+  color: #fffef6;
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0.12em;
@@ -69,7 +69,7 @@
 }
 
 .sm-toggle:focus-visible {
-  outline: 3px solid #ef4c3c;
+  outline: 3px solid #56c6b5;
   outline-offset: 5px;
   border-radius: 4px;
 }
@@ -120,8 +120,8 @@
   flex-direction: column;
   overflow-y: auto;
   padding: clamp(115px, 14vh, 150px) clamp(30px, 5vw, 72px) clamp(30px, 5vw, 64px);
-  background: #10291e;
-  color: #f4f1df;
+  background: #1c2a42;
+  color: #fffef6;
   opacity: 0;
   pointer-events: auto;
 }
@@ -149,7 +149,7 @@
   position: relative;
   display: inline-block;
   padding-right: 1.35em;
-  color: #f4f1df;
+  color: #fffef6;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: clamp(2.8rem, 5.2vw, 5.4rem);
   font-weight: 900;
@@ -162,8 +162,8 @@
 }
 
 .sm-panel-item:hover,
-.sm-panel-item:focus-visible { color: var(--sm-accent, #f7df36); transform: translateX(8px); }
-.sm-panel-item:focus-visible { outline: 3px solid var(--sm-accent, #f7df36); outline-offset: 5px; }
+.sm-panel-item:focus-visible { color: var(--sm-accent, #ffd400); transform: translateX(8px); }
+.sm-panel-item:focus-visible { outline: 3px solid var(--sm-accent, #ffd400); outline-offset: 5px; }
 .sm-panel-itemLabel { display: inline-block; transform-origin: 50% 100%; will-change: transform; }
 .sm-panel-list[data-numbering] { counter-reset: smItem; }
 
@@ -173,7 +173,7 @@
   position: absolute;
   top: 0.08em;
   right: 0;
-  color: var(--sm-accent, #f7df36);
+  color: var(--sm-accent, #ffd400);
   font-family: "Avenir Next", Avenir, "Helvetica Neue", Arial, sans-serif;
   font-size: clamp(0.72rem, 1vw, 0.92rem);
   font-weight: 900;
@@ -186,7 +186,7 @@
 .sm-socials { margin-top: auto; padding-top: 2.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
 .sm-socials-title {
   margin: 0;
-  color: var(--sm-accent, #f7df36);
+  color: var(--sm-accent, #ffd400);
   font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0.16em;
@@ -195,7 +195,7 @@
 .sm-socials-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1rem; }
 .sm-socials-link {
   display: inline-block;
-  color: #f4f1df;
+  color: #fffef6;
   font-size: clamp(1rem, 1.7vw, 1.35rem);
   font-weight: 800;
   text-decoration: none;
@@ -203,8 +203,8 @@
 }
 .sm-socials-list:hover .sm-socials-link:not(:hover) { opacity: 0.35; }
 .sm-socials-link:hover,
-.sm-socials-link:focus-visible { color: var(--sm-accent, #f7df36); opacity: 1; }
-.sm-socials-link:focus-visible { outline: 2px solid var(--sm-accent, #f7df36); outline-offset: 4px; }
+.sm-socials-link:focus-visible { color: var(--sm-accent, #ffd400); opacity: 1; }
+.sm-socials-link:focus-visible { outline: 2px solid var(--sm-accent, #ffd400); outline-offset: 4px; }
 
 @media (max-width: 720px) {
   .staggered-menu-header { padding: 14px 18px; }
@@ -227,8 +227,8 @@
 /* Contrast is sampled at each control, so split backgrounds work on mobile too. */
 .staggered-menu-header .sm-logo,
 .staggered-menu-header .sm-toggle {
-  color: var(--nav-ink, #f4f1df);
-  text-shadow: 0 1px 8px var(--nav-shadow, #08150f66);
+  color: var(--nav-ink, #fffef6);
+  text-shadow: 0 1px 8px var(--nav-shadow, #161f3066);
 }
 .staggered-menu-header .sm-logo:focus-visible,
 .staggered-menu-header .sm-toggle:focus-visible {

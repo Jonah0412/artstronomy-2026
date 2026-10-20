@@ -5,16 +5,16 @@ import { useNavigationContrast } from "./useNavigationContrast.js";
 
 export const StaggeredMenu = ({
   position = "right",
-  colors = ["#a886df", "#ef4c3c", "#f7df36"],
+  colors = ["#3e7bef", "#56c6b5", "#ffd400"],
   items = [],
   socialItems = [],
   displaySocials = true,
   displayItemNumbering = true,
   className,
   logoUrl = "/assets/artstronomy-logo.png",
-  menuButtonColor = "#f4f1df",
-  openMenuButtonColor = "#f4f1df",
-  accentColor = "#f7df36",
+  menuButtonColor = "#fffef6",
+  openMenuButtonColor = "#fffef6",
+  accentColor = "#ffd400",
   changeMenuColorOnOpen = true,
   isFixed = false,
   closeOnClickAway = true,
@@ -261,7 +261,7 @@ export const StaggeredMenu = ({
       data-open={open || undefined}
     >
       <div ref={preLayersRef} className="sm-prelayers" aria-hidden="true">
-        {(colors?.length ? colors.slice(0, 4) : ["#a886df", "#ef4c3c", "#f7df36"]).map((color, index) => (
+        {(colors?.length ? colors.slice(0, 4) : ["#3e7bef", "#56c6b5", "#ffd400"]).map((color, index) => (
           <div key={`${color}-${index}`} className="sm-prelayer" style={{ background: color }} />
         ))}
       </div>

@@ -3,10 +3,10 @@ export const EYE_HEIGHT=1.65;
 export const SEAT_HEIGHT=1.15;
 export const ROOM={halfWidth:36,front:7.2,back:-24.5};
 export const WINGS=[
- {id:'atrium',label:'Atrium',x0:-7.5,x1:7.5,z0:-7.5,z1:7,anchor:{x:0,z:0},color:'#d2b77b'},
- {id:'identity',label:'Branding + Advertising',x0:-23,x1:-7,z0:-5.5,z1:5.5,anchor:{x:-12,z:0},color:'#e1b87d'},
- {id:'interaction',label:'Publishing + Web Design',x0:7,x1:35,z0:-5.5,z1:5.5,anchor:{x:12,z:0},color:'#99c8bb'},
- {id:'animation',label:'Animation',x0:-5.5,x1:5.5,z0:-24,z1:-7,anchor:{x:0,z:-12},color:'#b6a3d5'},
+ {id:'atrium',label:'Atrium',x0:-7.5,x1:7.5,z0:-7.5,z1:7,anchor:{x:0,z:0},color:'#ffd400'},
+ {id:'identity',label:'Branding + Advertising',x0:-23,x1:-7,z0:-5.5,z1:5.5,anchor:{x:-12,z:0},color:'#ffd400'},
+ {id:'interaction',label:'Publishing + Web Design',x0:7,x1:35,z0:-5.5,z1:5.5,anchor:{x:12,z:0},color:'#56c6b5'},
+ {id:'animation',label:'Animation',x0:-5.5,x1:5.5,z0:-24,z1:-7,anchor:{x:0,z:-12},color:'#3e7bef'},
 ];
 const safeZones=[{x0:-7,x1:7,z0:-7,z1:6.2},{x0:-22.3,x1:-6.4,z0:-4.55,z1:4.55},{x0:6.4,x1:34.3,z0:-4.55,z1:4.55},{x0:-4.55,x1:4.55,z0:-23.3,z1:-6.4}];
 // Include shoulder clearance around the physical holographic table.

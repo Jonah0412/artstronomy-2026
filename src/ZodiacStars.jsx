@@ -219,9 +219,9 @@ export function ZodiacStars({ videoRef, stream, mirrored, onSave }) {
       const h = scene.clientHeight;
       const ctx = context;
       const bg = ctx.createRadialGradient(w * .52, h * .48, 1, w * .5, h * .5, Math.max(w, h) * .75);
-      bg.addColorStop(0, "#12362d");
-      bg.addColorStop(.55, "#071c19");
-      bg.addColorStop(1, "#020b0a");
+      bg.addColorStop(0, "#161f30");
+      bg.addColorStop(.55, "#161f30");
+      bg.addColorStop(1, "#0b1220");
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, w, h);
 
@@ -247,7 +247,7 @@ export function ZodiacStars({ videoRef, stream, mirrored, onSave }) {
         ctx.lineJoin = "round";
         ctx.lineWidth = stageRef.current === "reveal" ? 2.8 : 2;
         ctx.strokeStyle = "rgba(255,224,116,.9)";
-        ctx.shadowColor = "#f8d86b";
+        ctx.shadowColor = "#ffd400";
         ctx.shadowBlur = 18;
         ctx.beginPath();
         plotted.slice(0, progressRef.current + 1).forEach(([x, y], index) => index ? ctx.lineTo(x, y) : ctx.moveTo(x, y));
@@ -255,8 +255,8 @@ export function ZodiacStars({ videoRef, stream, mirrored, onSave }) {
         ctx.shadowBlur = 0;
         plotted.forEach(([x, y], index) => {
           const lit = index <= progressRef.current;
-          ctx.fillStyle = lit ? "#fff7ce" : "rgba(240,231,191,.43)";
-          ctx.shadowColor = lit ? "#ffe37b" : "transparent";
+          ctx.fillStyle = lit ? "#fffef6" : "rgba(240,231,191,.43)";
+          ctx.shadowColor = lit ? "#ffd400" : "transparent";
           ctx.shadowBlur = lit ? 22 : 0;
           ctx.beginPath(); ctx.arc(x, y, lit ? 5 : 3, 0, Math.PI * 2); ctx.fill();
         });
@@ -266,7 +266,7 @@ export function ZodiacStars({ videoRef, stream, mirrored, onSave }) {
           ctx.fillStyle = "rgba(255,226,125,.14)";
           ctx.font = `${Math.min(w * .43, h * .55)}px serif`;
           ctx.fillText(zodiacSigns[signRef.current][1], w / 2, h * .7);
-          ctx.fillStyle = "#f8e7a3";
+          ctx.fillStyle = "#ffd400";
           ctx.font = `700 ${Math.min(40, Math.max(22, w * .04))}px Georgia, serif`;
           ctx.fillText(`You awakened ${zodiacSigns[signRef.current][0]}`, w / 2, mobile ? h * .77 : h * .86);
         }
@@ -284,8 +284,8 @@ export function ZodiacStars({ videoRef, stream, mirrored, onSave }) {
         particle.life *= .91;
       });
       if (hand.visible) {
-        ctx.strokeStyle = "#f7df36";
-        ctx.shadowColor = "#f7df36";
+        ctx.strokeStyle = "#ffd400";
+        ctx.shadowColor = "#ffd400";
         ctx.shadowBlur = 24;
         ctx.lineWidth = 2;
         ctx.beginPath(); ctx.arc(hand.x, hand.y, 15 + Math.sin(now * .008) * 2, 0, Math.PI * 2); ctx.stroke();
